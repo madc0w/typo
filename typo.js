@@ -17,11 +17,11 @@ var maxSteps;
 var stats = [];
 
 var sounds = {
-	badKey : new Audio("audio/Funny-noise.mp3"),
-	ballAtBottom : new Audio("audio/ball-at-bottom.mp3"),
-	keyPress : new Audio("audio/Button-click-sound.mp3"),
-	ballComplete : new Audio("audio/Level-up-sound-effect.mp3"),
-	gameOver : new Audio("audio/Game-over-robotic-voice.mp3")
+	badKey: new Audio("audio/Funny-noise.mp3"),
+	ballAtBottom: new Audio("audio/ball-at-bottom.mp3"),
+	keyPress: new Audio("audio/Button-click-sound.mp3"),
+	ballComplete: new Audio("audio/Level-up-sound-effect.mp3"),
+	gameOver: new Audio("audio/Game-over-robotic-voice.mp3")
 };
 
 function onLoad() {
@@ -36,7 +36,7 @@ function onLoad() {
 
 function setup() {
 	var html = "<ul>";
-	for ( var i in config.levels) {
+	for (var i in config.levels) {
 		html += "<li><a href=\"#\" id=\"level-" + i + "\" onClick=\"selectLevel(" + i + ");\">" + config.levels[i].name + "</a></li>";
 	}
 	html += "</ul>";
@@ -143,22 +143,22 @@ function step() {
 		}
 		if (gram) {
 			var ball = {
-				y : 0,
-				x : Math.random(),
-				vel : {
-					x : (Math.random() - 0.5) * 0.01,
-					y : Math.random() * 0.0012
+				y: 0,
+				x: Math.random(),
+				vel: {
+					x: (Math.random() - 0.5) * 0.01,
+					y: Math.random() * 0.0012
 				},
-				gram : gram,
-				hue : Math.random(),
-				opacity : 0.8,
-				radius : 25 + (Math.random() * 15),
-				radiusFreq : 8 + (Math.random() * 5),
-				radiusAmplitude : 4 + (Math.random() * 2),
-				typedLettersIndex : -1,
-				id : currId++,
-				isComplete : false,
-				fontSize : 28
+				gram: gram,
+				hue: Math.random(),
+				opacity: 0.8,
+				radius: 25 + (Math.random() * 15),
+				radiusFreq: 8 + (Math.random() * 5),
+				radiusAmplitude: 4 + (Math.random() * 2),
+				typedLettersIndex: -1,
+				id: currId++,
+				isComplete: false,
+				fontSize: 28
 			};
 			balls.push(ball);
 		} else {
@@ -174,7 +174,7 @@ function step() {
 	gameContext.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
 
 	var toRemove = [];
-	for ( var i in balls) {
+	for (var i in balls) {
 		var ball = balls[i];
 		if (ball.isComplete) {
 			ball.radius *= 1.1;
@@ -236,8 +236,8 @@ function step() {
 }
 
 function removeBalls(toRemove) {
-	for ( var j in toRemove) {
-		for ( var i in balls) {
+	for (var j in toRemove) {
+		for (var i in balls) {
 			var ball = balls[i];
 			if (ball.id == toRemove[j].id) {
 				balls.splice(i, 1);
@@ -269,8 +269,8 @@ function onClick(e) {
 			show("stats");
 		} else if (e.target.id == "reset-stats") {
 			stats[level] = {
-				goodKeyCounts : {},
-				badKeyCounts : {},
+				goodKeyCounts: {},
+				badKeyCounts: {},
 			};
 			localStorage.setItem("stats", JSON.stringify(stats));
 			showStats();
@@ -329,22 +329,22 @@ function showStats() {
 	var badKeys = [];
 	var totalBadKeys = 0;
 	if (stats[level] && stats[level].badKeyCounts) {
-		for ( var key in stats[level].badKeyCounts) {
+		for (var key in stats[level].badKeyCounts) {
 			var count = stats[level].badKeyCounts[key];
 			totalBadKeys += count;
 			badKeys.push({
-				key : key,
-				count : count
+				key: key,
+				count: count
 			});
 		}
 	}
-	badKeys.sort(function(key1, key2) {
+	badKeys.sort(function (key1, key2) {
 		return key1.count < key2.count;
 	});
 
 	var totalKeys = totalBadKeys;
 	if (stats[level] && stats[level].goodKeyCounts) {
-		for ( var key in stats[level].goodKeyCounts) {
+		for (var key in stats[level].goodKeyCounts) {
 			totalKeys += stats[level].goodKeyCounts[key];
 		}
 	}
@@ -419,7 +419,7 @@ function onKeyPress(e) {
 
 	var completedBalls = [];
 	var isFound = false;
-	for ( var i in balls) {
+	for (var i in balls) {
 		var ball = balls[i];
 		if (!ball.isComplete) {
 			if (ball.gram.charAt(ball.typedLettersIndex + 1) == key) {
@@ -428,7 +428,7 @@ function onKeyPress(e) {
 				if (ball.typedLettersIndex + 1 == ball.gram.length) {
 					ball.isComplete = true;
 					completedBalls.push(ball);
-					for ( var j in balls) {
+					for (var j in balls) {
 						var ball2 = balls[j];
 						if (ball2.id != ball.id) {
 							ball2.typedLettersIndex = -1;
@@ -442,8 +442,8 @@ function onKeyPress(e) {
 
 	if (!stats[level]) {
 		stats[level] = {
-			goodKeyCounts : {},
-			badKeyCounts : {}
+			goodKeyCounts: {},
+			badKeyCounts: {}
 		};
 	}
 	if (!stats[level].goodKeyCounts) {
@@ -472,7 +472,7 @@ function onKeyPress(e) {
 	}
 
 	if (completedBalls.length > 0) {
-		for ( var i in completedBalls) {
+		for (var i in completedBalls) {
 			var ball = completedBalls[i];
 			addScore(40 * (1 - ball.y) * ball.gram.length);
 		}
@@ -483,7 +483,7 @@ function onKeyPress(e) {
 }
 
 function stopSounds() {
-	for ( var sound in sounds) {
+	for (var sound in sounds) {
 		sounds[sound].pause();
 		sounds[sound].currentTime = 0;
 	}
@@ -520,75 +520,75 @@ function setKeyboard(k) {
 
 function getDefaultConfig() {
 	return {
-		maxTime : 40, // secs	
-		newBallProbability : 0.025,
-		levels : [
+		maxTime: 40, // secs
+		newBallProbability: 0.025,
+		levels: [
 			{
-				name : "Beginner",
-				gravity : 0.00001,
-				grams : {
-					qwertz : [ "a", "s", "d", "f", "j", "k", "l", "g", "h" ],
-					azerty : [ "q", "s", "d", "f", "g", "h", "j", "k", "l", "m" ],
+				name: "Beginner",
+				gravity: 0.00001,
+				grams: {
+					qwertz: ["a", "s", "d", "f", "j", "k", "l", "g", "h"],
+					azerty: ["q", "s", "d", "f", "g", "h", "j", "k", "l", "m"],
 				}
 			},
 			{
-				name : "Level 2",
-				gravity : 0.000012,
-				grams : {
-					qwertz : [ "aq", "sw", "de", "fr", "ju", "ki", "lo", "p", "ft", "jh", "fg" ],
-					azerty : [ "qa", "sz", "de", "fr", "ju", "ki", "lo", "mp", "ft", "jh", "fg" ],
+				name: "Level 2",
+				gravity: 0.000012,
+				grams: {
+					qwertz: ["aq", "sw", "de", "fr", "ju", "ki", "lo", "p", "ft", "jh", "fg"],
+					azerty: ["qa", "sz", "de", "fr", "ju", "ki", "lo", "mp", "ft", "jh", "fg"],
 				}
 			},
 			{
-				name : "Level 3",
-				gravity : 0.000012,
-				grams : {
-					qwertz : [ "ay", "sx", "dc", "fv", "gv", "jn", "jm", "k,", "l.", "jh", "fg" ],
-					azerty : [ "qw", "sx", "dc", "fv", "gv", "jn", "jm", "k,", "l;", "jh", "fg" ],
+				name: "Level 3",
+				gravity: 0.000012,
+				grams: {
+					qwertz: ["ay", "sx", "dc", "fv", "gv", "jn", "jm", "k,", "l.", "jh", "fg"],
+					azerty: ["qw", "sx", "dc", "fv", "gv", "jn", "jm", "k,", "l;", "jh", "fg"],
 				}
 			},
 			{
-				name : "Intermediate",
-				gravity : 0.000015,
-				grams : {
-					qwertz : [ "papa", "haha", "lolo", "mama", "rar", "dada", "fifi", "fofo", "nana", "popo", "tata", "toto", "fyfy", "gogo", "gaga" ],
-					azerty : [ "sasa", "haha", "lolo", "mama", "kaka", "dada", "fifi", "fofo", "dede", "popo", "tata", "toto", "fyfy", "gogo", "gaga" ],
+				name: "Intermediate",
+				gravity: 0.000015,
+				grams: {
+					qwertz: ["papa", "haha", "lolo", "mama", "rar", "dada", "fifi", "fofo", "nana", "popo", "tata", "toto", "fyfy", "gogo", "gaga"],
+					azerty: ["sasa", "haha", "lolo", "mama", "kaka", "dada", "fifi", "fofo", "dede", "popo", "tata", "toto", "fyfy", "gogo", "gaga"],
 				}
 			},
 			{
-				name : "Advanced",
-				gravity : 0.00002,
-				grams : {
-					qwertz : [ "jun", "jul", "may", "jan", "ver", "sew", "wet", "pol", "nop", "fre", "nuh", "vop", "dee", "boo", "oop", "bin", "hex",
+				name: "Advanced",
+				gravity: 0.00002,
+				grams: {
+					qwertz: ["jun", "jul", "may", "jan", "ver", "sew", "wet", "pol", "nop", "fre", "nuh", "vop", "dee", "boo", "oop", "bin", "hex",
 						"dec", "ibm", "ocr", "fra", "usa", "the", "une", "dog", "cat", "big", "pig", "sun", "eat", "dot", "dig", "pup", "hen", "vat",
-						"ici", "moi", "ton", "nos", "him", "his", "her", "she", "out", "our" ],
-					azerty : [ "jun", "jul", "may", "jan", "ver", "sew", "wet", "pol", "nop", "fre", "nuh", "vop", "dee", "boo", "oop", "bin", "hex",
+						"ici", "moi", "ton", "nos", "him", "his", "her", "she", "out", "our"],
+					azerty: ["jun", "jul", "may", "jan", "ver", "sew", "wet", "pol", "nop", "fre", "nuh", "vop", "dee", "boo", "oop", "bin", "hex",
 						"dec", "ibm", "ocr", "fra", "usa", "the", "une", "dog", "cat", "big", "pig", "sun", "eat", "dot", "dig", "pup", "hen", "vat",
-						"ici", "moi", "ton", "nos", "him", "his", "her", "she", "out", "our" ],
+						"ici", "moi", "ton", "nos", "him", "his", "her", "she", "out", "our"],
 				}
 			},
 			{
-				name : "Hardcore",
-				gravity : 0.000025,
-				grams : {
-					qwertz : [ "the", "quick", "brown", "fox", "jumped", "over", "lazy", "kangaroo", "dog", "monkey", "duck", "jump", "troll",
+				name: "Hardcore",
+				gravity: 0.000025,
+				grams: {
+					qwertz: ["the", "quick", "brown", "fox", "jumped", "over", "lazy", "kangaroo", "dog", "monkey", "duck", "jump", "troll",
 						"giant", "zulu", "boat", "ship", "work", "play", "rain", "cloud", "west", "north", "south", "east", "atom", "quark", "mouse",
-						"bunny" ],
-					azerty : [ "the", "quick", "brown", "fox", "jumped", "over", "lazy", "kangaroo", "dog", "monkey", "duck", "jump", "troll",
+						"bunny"],
+					azerty: ["the", "quick", "brown", "fox", "jumped", "over", "lazy", "kangaroo", "dog", "monkey", "duck", "jump", "troll",
 						"giant", "zulu", "boat", "ship", "work", "play", "rain", "cloud", "west", "north", "south", "east", "atom", "quark", "mouse",
-						"bunny" ],
+						"bunny"],
 				}
 			},
 			{
-				name : "Ludicrous",
-				gravity : 0.00006,
-				grams : {
-					qwertz : [ "this", "here", "omg", "wtf", "madness", "wow", "r5zq", "please", "stop", "321go", "words", "fast", "very", "8px32",
-						"dd6gv", "bq992" ],
-					azerty : [ "this", "here", "omg", "wtf", "madness", "wow", "r5zq", "please", "stop", "321go", "words", "fast", "very", "8px32",
-						"dd6gv", "bq992" ],
+				name: "Ludicrous",
+				gravity: 0.00006,
+				grams: {
+					qwertz: ["this", "here", "omg", "wtf", "madness", "wow", "r5zq", "please", "stop", "321go", "words", "fast", "very", "8px32",
+						"dd6gv", "bq992"],
+					azerty: ["this", "here", "omg", "wtf", "madness", "wow", "r5zq", "please", "stop", "321go", "words", "fast", "very", "8px32",
+						"dd6gv", "bq992"],
 				}
-			}, ]
+			},]
 	};
 }
 
@@ -606,35 +606,35 @@ function hsvToRgb(h, s, v) {
 	var q = v * (1 - f * s);
 	var t = v * (1 - (1 - f) * s);
 	switch (i % 6) {
-	case 0:
-		r = v, g = t, b = p;
-		break;
-	case 1:
-		r = q, g = v, b = p;
-		break;
-	case 2:
-		r = p, g = v, b = t;
-		break;
-	case 3:
-		r = p, g = q, b = v;
-		break;
-	case 4:
-		r = t, g = p, b = v;
-		break;
-	case 5:
-		r = v, g = p, b = q;
-		break;
+		case 0:
+			r = v, g = t, b = p;
+			break;
+		case 1:
+			r = q, g = v, b = p;
+			break;
+		case 2:
+			r = p, g = v, b = t;
+			break;
+		case 3:
+			r = p, g = q, b = v;
+			break;
+		case 4:
+			r = t, g = p, b = v;
+			break;
+		case 5:
+			r = v, g = p, b = q;
+			break;
 	}
 	var rgb = {
-		r : Math.round(r * 255),
-		g : Math.round(g * 255),
-		b : Math.round(b * 255)
+		r: Math.round(r * 255),
+		g: Math.round(g * 255),
+		b: Math.round(b * 255)
 	};
 	return rgb;
 }
 
 function rgbToHex(rgb) {
-	var componentToHex = function(c) {
+	var componentToHex = function (c) {
 		var hex = c.toString(16);
 		if (hex.length == 1) {
 			hex = "0" + hex;
