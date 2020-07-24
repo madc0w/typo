@@ -1,0 +1,176 @@
+body {
+	background-color: #eef;
+	font-family: Arial;
+}
+
+h1 {
+	color: blue;
+}
+
+#dim-overlay {
+	display: none;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	opacity: 0.6;
+	z-index: 1;
+}
+
+#game-canvas {
+	border: 4px solid #004080;
+	border-radius: 8px;
+	box-shadow: 10px 15px 24px 0px rgba(0, 0, 0, 0.4);
+}
+
+#controls {
+	margin: 20px;
+	width: 800px;
+}
+
+#score-div {
+	display: inline-block;
+	vertical-align: top;
+	padding: 20px;
+	margin-left: 20px;
+	background-color: #ee2;
+	border: 4px solid #004080;
+	border-radius: 8px;
+	box-shadow: 10px 15px 24px 0px rgba(0, 0, 0, 0.4);
+	border-radius: 8px;
+}
+
+.score {
+	padding-left: 20px;
+	font-family: monospace;
+}
+
+#level-selection {
+	margin-bottom: 10px;
+}
+
+#level-selection li {
+	margin-bottom: 20px;
+}
+
+ul {
+	list-style-type: katakana;
+}
+
+#level-selection a {
+	padding: 10px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: bold;
+	color: blue;
+}
+
+#level-selection .selected {
+	box-shadow: 10px 15px 24px 0px rgba(0, 0, 0, 0.4);
+	background-color: white;
+	border: 2px solid #004080;
+	padding: 5px;
+}
+
+#game-progress-wrapper {
+	width: 800px;
+	border-width: 4px;
+	border-color: #222;
+	border-style: solid;
+	margin-bottom: 10px;
+	border: 4px solid #004080;
+	border-radius: 8px;
+	background-color: #e6e6e6;
+}
+
+#game-progress {
+	height: 12px;
+	width: 0px;
+	background-color: #ee2;
+	border-radius: 4px;
+	border-style: solid;
+	border-color: #004080;
+	border-width: 2px;
+}
+
+#score-div td {
+	font-size: 40px;
+}
+
+button {
+	cursor: pointer;
+	border: 4px solid #004080;
+	border-radius: 8px;
+	background-color: #ee2;
+	padding: 10px;
+	font-weight: bold;
+	border: 4px solid #004080;
+	box-shadow: 10px 15px 24px 0px rgba(0, 0, 0, 0.4);
+}
+
+#edit-config {
+	float: right;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	top: 60px;
+	left: 120px;
+	z-index: 1;
+	background-color: #ee2;
+	padding: 20px;
+	border-radius: 8px;
+	border: 4px solid #004080;
+	border-radius: 8px;
+	box-shadow: 10px 15px 24px 0px rgba(0, 0, 0, 0.4);
+}
+
+.modal button {
+	background-color: white;
+}
+
+#config button#reset-config {
+	float: right;
+}
+
+#config-controls, #stats-controls {
+	margin-top: 10px;
+}
+
+#keyboard-selection {
+	margin: 20px;
+	padding-top: 20px;
+}
+
+#keyboard-selection div {
+	display: inline;
+	box-shadow: 10px 15px 24px 0px rgba(0, 0, 0, 0.4);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 20px;
+	background-color: white;
+	border-radius: 8px;
+	color: blue;
+	cursor: pointer;
+}
+
+#keyboard-selection div.selected {
+	border: 2px solid #004080;
+	font-weight: bold;
+}
+
+#byline {
+	font-size: 12px;
+}
+
+td.stat-label {
+	vertical-align: top;
+	text-align: right;
+	padding-right: 10px;
+	font-weight: bold;
+}
