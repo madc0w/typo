@@ -197,7 +197,7 @@ function step() {
 			}
 			if (ball.y > 1) {
 				toRemove.push(ball);
-				addScore(-40);
+				addScore(-5);
 				sounds.ballAtBottom.play();
 			}
 		}
