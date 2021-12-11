@@ -1,58 +1,60 @@
 <html>
-<head>
-<title>Typo</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
-<script type="text/javascript" src="typo.js"></script>
-</head>
-<body onLoad="onLoad();" onKeyPress="onKeyPress(event);" onKeyUp="onKeyUp(event);"
-	onClick="onClick(event);">
-	<div id="dim-overlay"></div>
-	<div id="game-progress-wrapper">
-		<div id="game-progress"></div>
-	</div>
-	<canvas id="game-canvas" width="800" height="600"></canvas>
-	<div id="score-div">
-		<table>
-			<tr>
-				<td>Score</td>
-				<td class="score" id="score"></td>
-			</tr>
-			<tr>
-				<td>High Score</td>
-				<td class="score" id="hi-score">-</td>
-			</tr>
-		</table>
-		<div id="level-selection"></div>
-		<div id="keyboard-selection">
-			<div id="keyboard-qwertz" class="selected">QWERTZ</div>
-			<div id="keyboard-azerty">AZERTY</div>
+
+	<head>
+		<title>Typo</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script type="text/javascript" src="typo.js"></script>
+	</head>
+
+	<body onLoad="onLoad();" onKeyPress="onKeyPress(event);" onKeyUp="onKeyUp(event);" onClick="onClick(event);">
+		<div id="dim-overlay"></div>
+		<div id="game-progress-wrapper">
+			<div id="game-progress"></div>
 		</div>
-	</div>
-	<div id="controls">
-		<button id="pause-button">Pause (or hit space bar)</button>
-		<button id="start-button">Play Again</button>
-		<button id="stats-button">Stats</button>
-		<button id="edit-config">Game Configuration</button>
-	</div>
-	<div id="config" class="modal">
-		<textarea id="config-text" rows="40" cols="60"></textarea>
-		<div id="config-controls">
-			<button id="save-config">Save</button>
-			<button id="cancel-config">Cancel</button>
-			<button id="reset-config">Reset to Default</button>
+		<canvas id="game-canvas" width="800" height="600"></canvas>
+		<div id="score-div">
+			<table>
+				<tr>
+					<td>Score</td>
+					<td class="score" id="score"></td>
+				</tr>
+				<tr>
+					<td>High Score</td>
+					<td class="score" id="hi-score">-</td>
+				</tr>
+			</table>
+			<div id="level-selection"></div>
+			<div id="keyboard-selection">
+				<div id="keyboard-qwertz" class="selected">QWERTZ</div>
+				<div id="keyboard-azerty">AZERTY</div>
+			</div>
 		</div>
-	</div>
-	<div id="stats" class="modal">
-		<div id="stats-content">
+		<div id="controls">
+			<button id="pause-button">Pause (or hit space bar)</button>
+			<button id="start-button">Play Again</button>
+			<button id="stats-button">Stats</button>
+			<button id="edit-config">Game Configuration</button>
 		</div>
-		<div id="stats-controls">
-			<button id="reset-stats">Reset Stats</button>
-			<button id="close-stats">Close</button>
+		<div id="config" class="modal">
+			<textarea id="config-text" rows="40" cols="60"></textarea>
+			<div id="config-controls">
+				<button id="save-config">Save</button>
+				<button id="cancel-config">Cancel</button>
+				<button id="reset-config">Reset to Default</button>
+			</div>
 		</div>
-	</div>
-	<div id="byline">
-	Brought to you by <a href="mailto:mad7@runbox.com">Marc A. Donis</a>.  Gimme some <a href="mailto:mad7@runbox.com?subject=Typo love">love</a>!<br/>
-	<a href="mailto:mad7@runbox.com">mad7@runbox.com</a>
-	</div>
-</body>
+		<div id="stats" class="modal">
+			<div id="stats-content">
+			</div>
+			<div id="stats-controls">
+				<button id="reset-stats">Reset Stats</button>
+				<button id="close-stats">Close</button>
+			</div>
+		</div>
+		<div id="byline">
+			Brought to you by <a href="mailto:mad7@runbox.com">Marc A. Donis</a>. Gimme some <a href="mailto:mad7@runbox.com?subject=Typo love">love</a>!<br />
+			<a href="mailto:mad7@runbox.com">mad7@runbox.com</a>
+		</div>
+	</body>
+
 </html>
